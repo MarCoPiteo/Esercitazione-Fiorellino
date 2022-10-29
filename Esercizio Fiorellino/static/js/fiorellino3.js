@@ -1,19 +1,12 @@
 let width = 600
 let height = 300
-let d = 80
+let diameter = 30
 
-let xA = 300
-let yA = 150
+let aumentoX = 3
+let aumentoY = 2
 
-let direzione = 1
-
-let origineX = xA-xA
-let origineFinalCircle = width
-let hiddenIterationFlower= origineX - xA
-
-function setup () {
-	createCanvas(width, height)
-}
+let x = 300
+let y = 150
 
 function drawFlower(x, y, d) {
 	let r = d/2
@@ -30,30 +23,32 @@ function drawFlower(x, y, d) {
 	circle(x, y, d)
 }
 
-function draw() {
-	
-	hiddenIterationFlower = hiddenIterationFlower + direzione
-	xA = xA + direzione
-	origineX = origineX + direzione
-	origineFinalCircle = origineFinalCircle + direzione
 
+function setup () {
+	createCanvas(width, height)
+}
+
+
+function draw() {
 	background(0,255,0)
 
-	
-	drawFlower(hiddenIterationFlower, yA, d) //FIORE NASCOSTO PER IL MOVIMENTO
-	drawFlower(xA, yA, d)					 //FIORE CENTRALE
-	drawFlower(origineX, yA, d)				 //FIORE DI SINISTRA
-	drawFlower(origineFinalCircle, yA, d) 	 //FIORE DI DESTRA
+	drawFlower(x, y, diameter)
 
-	if (xA == 600) {
-		origineX = 0
-		xA = 300
+	x = x + aumentoX
+	y = y + aumentoY
 
-		hiddenIterationFlower = origineX - xA
-		origineFinalCircle = width
-		let iterazioneFlowerOrigine = hiddenIterationFlower - xA
+	console.log(y)
 
-		drawFlower(iterazioneFlowerOrigine, yA, d)		//FIORE NASCOSTO CHE ESCE DA SINISTRA
+	if (y >= height-diameter) {
+		aumentoY = -aumentoY
+
+		console.log(y)
+	} else if (y <= 0+diameter) {
+		aumentoY = -aumentoY
+	} else if (x >= width-diameter) {
+		aumentoX = -aumentoX
+	} else if (x <= 0+diameter) {
+		aumentoX = -aumentoX
 	}
 
 }
