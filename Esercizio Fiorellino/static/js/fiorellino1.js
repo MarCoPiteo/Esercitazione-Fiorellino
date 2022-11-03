@@ -7,7 +7,7 @@ let yA = 150
 
 let direzione = 1
 
-let origineX = xA-xA
+let origineX = 0
 let origineFinalCircle = width
 let hiddenIterationFlower= origineX - xA
 
@@ -32,12 +32,12 @@ function drawFlower(x, y, d) {
 
 function draw() {
 	
+	background(0,255,0)
 	hiddenIterationFlower = hiddenIterationFlower + direzione
 	xA = xA + direzione
 	origineX = origineX + direzione
 	origineFinalCircle = origineFinalCircle + direzione
 
-	background(0,255,0)
 
 	
 	drawFlower(hiddenIterationFlower, yA, d) //FIORE NASCOSTO PER IL MOVIMENTO
@@ -53,7 +53,6 @@ function draw() {
 		origineFinalCircle = width
 		let iterazioneFlowerOrigine = hiddenIterationFlower - xA
 
-		drawFlower(iterazioneFlowerOrigine, yA, d)		//FIORE NASCOSTO CHE ESCE DA SINISTRA
+		drawFlower(iterazioneFlowerOrigine, yA, d)		//FIORE NASCOSTO CHE ESCE DA SINISTRA*/
 	}
-
 }
